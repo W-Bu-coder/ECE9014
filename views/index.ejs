@@ -1,0 +1,49 @@
+<%- include partials/header.ejs %>
+<div class="table-wrapper">
+    <% if (gyms.length > 0) { %>
+        <table class="table table-hovered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Cover</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Latitude</th>
+                    <th scope="col">Longitude</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Telephone</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% gyms.forEach((gym, index) => { %>
+                    <tr>
+                        <th scope="row"><%= gym.id %></th>
+                        <td><%= gym.merchant_id %></td>
+                        <td><%= gym.name %></td>
+                        <td><%= gym.address %></td>
+                        <td><img src=<%= gym.cover %> class="rounded-circle player-img" alt=""></td>
+                        <td><%= gym.city %></td>
+                        <td><%= gym.lat %></td>
+                        <td><%= gym.lon %></td>
+                        <td><%= gym.contact %></td>
+                        <td><%= gym.telephone %></td>
+                        <td><%= gym.status === 1 ? 'Active' : 'Inactive' %></td>
+                        <td>
+                            <a href="/edit/<%= gym.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                            <a href="/delete/<%= gym.id %>" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p class="text-center">No gyms found. Go <a href="/add">here</a> to add gyms.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>

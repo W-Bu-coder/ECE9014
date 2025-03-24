@@ -1,0 +1,33 @@
+<%- include ../partials/header.ejs %>
+<div class="container">
+    <form class="edit-coach-form" action="/coaches/edit/<%= coach.id %>" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="<%= coach.name %>" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= coach.title %>" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="avatar">Avatar URL</label>
+            <input type="text" class="form-control" id="avatar" name="avatar" value="<%= coach.avatar %>" required>
+        </div>
+        <div class="form-group">
+            <label for="introduction">Introduction</label>
+            <textarea class="form-control" id="introduction" name="introduction" rows="3" required><%= coach.introduction %></textarea>
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status" class="form-control" required>
+                <option value="1" <%= coach.status === 1 ? 'selected' : '' %>>Active</option>
+                <option value="0" <%= coach.status === 0 ? 'selected' : '' %>>Inactive</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Coach</button>
+    </form>
+</div>
+</body>
+</html>

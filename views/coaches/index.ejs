@@ -1,0 +1,43 @@
+<%- include ../partials/header.ejs %>
+<div class="table-wrapper">
+    <% if (coaches.length > 0) { %>
+        <table class="table table-hovered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Avatar</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Introduction</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Updated At</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% coaches.forEach((coach, index) => { %>
+                    <tr>
+                        <th scope="row"><%= coach.id %></th>
+                        <td><%= coach.name %></td>
+                        <td><img src=<%= coach.avatar %> class="rounded-circle player-img" alt=""></td>
+                        <td><%= coach.title %></td>
+                        <td><%= coach.introduction.length > 30 ? coach.introduction.substring(0, 30) + '...' : coach.introduction %></td>
+                        <td><%= coach.status === 1 ? 'Active' : 'Inactive' %></td>
+                        <td><%= new Date(coach.created_at * 1000).toLocaleDateString() %></td>
+                        <td><%= new Date(coach.updated_at * 1000).toLocaleDateString() %></td>
+                        <td>
+                            <a href="/coaches/edit/<%= coach.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                            <a href="/coaches/delete/<%= coach.id %>" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p class="text-center">No coaches found. Go <a href="/coaches/add">here</a> to add coaches.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>

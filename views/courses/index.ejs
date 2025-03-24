@@ -1,0 +1,45 @@
+<%- include ../partials/header.ejs %>
+<div class="table-wrapper">
+    <% if (courses.length > 0) { %>
+        <table class="table table-hovered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Cover</th>
+                    <th scope="col">Introduction</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">End Time</th>
+                    <th scope="col">Lessons</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% courses.forEach((course, index) => { %>
+                    <tr>
+                        <th scope="row"><%= course.id %></th>
+                        <td><%= course.name %></td>
+                        <td><img src=<%= course.cover %> class="rounded course-img" alt="" style="width: 80px; height: 60px; object-fit: cover;"></td>
+                        <td><%= course.introduction.length > 50 ? course.introduction.substring(0, 50) + '...' : course.introduction %></td>
+                        <td><%= new Date(course.start_time).toLocaleString() %></td>
+                        <td><%= new Date(course.end_time).toLocaleString() %></td>
+                        <td><%= course.lessons %></td>
+                        <td>$<%= course.price %></td>
+                        <td><%= course.status === 1 ? 'Active' : 'Inactive' %></td>
+                        <td>
+                            <a href="/courses/edit/<%= course.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                            <a href="/courses/delete/<%= course.id %>" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p class="text-center">No courses found. Go <a href="/courses/add">here</a> to add courses.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>

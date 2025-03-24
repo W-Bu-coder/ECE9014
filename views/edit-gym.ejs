@@ -1,0 +1,75 @@
+<%- include partials/header.ejs %>
+<div class="container">
+    <div class="add-player-form">
+        <h2>Edit Gym: <%= gym.name %></h2>
+        <form action="/edit/<%= gym.id %>" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="merchant_id">Merchant ID</label>
+                    <input type="number" class="form-control" id="merchant_id" name="merchant_id" value="<%= gym.merchant_id %>" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="<%= gym.name %>" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" name="address" value="<%= gym.address %>" required>
+            </div>
+            <div class="form-group">
+                <label for="cover">Cover Image</label>
+                <input type="text" class="form-control" id="cover" name="cover" value="<%= gym.cover %>">
+                <% if (gym.cover) { %>
+                    <img src=<%=gym.cover%> alt="Current cover" class="mt-2" style="max-width: 200px;">
+                <% } %>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city" value="<%= gym.city %>" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="lat">Latitude</label>
+                    <input type="text" class="form-control" id="lat" name="lat" value="<%= gym.lat %>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="lon">Longitude</label>
+                    <input type="text" class="form-control" id="lon" name="lon" value="<%= gym.lon %>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="contact">Contact Person</label>
+                    <input type="text" class="form-control" id="contact" name="contact" value="<%= gym.contact %>">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="telephone">Telephone</label>
+                    <input type="text" class="form-control" id="telephone" name="telephone" value="<%= gym.telephone %>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3"><%= gym.description %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status">
+                    <option value="1" <%= gym.status == 1 ? 'selected' : '' %>>Active</option>
+                    <option value="0" <%= gym.status == 0 ? 'selected' : '' %>>Inactive</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Created At: <%= new Date(gym.created_at).toLocaleString() %></label>
+            </div>
+            <div class="form-group">
+                <label>Updated At: <%= new Date(gym.updated_at).toLocaleString() %></label>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Gym</button>
+            <a href="/" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<%- include ../partials/header.ejs %>
+<div class="container">
+    <form class="add-coach-form" action="/coaches/add" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="avatar">Avatar URL</label>
+            <input type="text" class="form-control" id="avatar" name="avatar" required>
+        </div>
+        <div class="form-group">
+            <label for="introduction">Introduction</label>
+            <textarea class="form-control" id="introduction" name="introduction" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status" class="form-control" required>
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Coach</button>
+    </form>
+</div>
+</body>
+</html>
