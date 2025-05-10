@@ -1,4 +1,4 @@
-This is a visibility of database Project, which support real-time CRUD.
+This is a visibility of 9014 (data management) Project, which supports real-time CRUD.
 
 Please modify the database configuration and port (if necessary) in app.js before starting the project.
 
