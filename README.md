@@ -1,6 +1,10 @@
 This is a visualization of 9014 (data management) Project, which supports real-time CRUD.
 
-Please modify the database configuration and port (if necessary) in app.js before starting the project.
+To see our database design outcome, please refer to https://github.com/codiy1992/ECE9014-Project
+
+--------------------
+
+Before starting the project, please modify the database configuration and port (if necessary) in app.js before starting the project.
 
 Commands to launch:
 
